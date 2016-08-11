@@ -1,0 +1,23 @@
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\bin\Debug\COE_Form.xaml.cs
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\bin\Debug\Gerador Mensagem FpML.exe.config
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\bin\Debug\Gerador Mensagem FpML.exe
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\bin\Debug\Gerador Mensagem FpML.pdb
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\COE_Form.baml
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\Swap_Form.baml
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\MainWindow.baml
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\RendaFixaCOE_Form.baml
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\App.baml
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\COE_Form.g.cs
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\Swap_Form.g.cs
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\MainWindow.g.cs
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\RendaFixaCOE_Form.g.cs
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\App.g.cs
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\Gerador Mensagem FpML_MarkupCompile.cache
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\Gerador Mensagem FpML.g.resources
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\Gerador_Mensagem_FpML.Properties.Resources.resources
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\Gerador Mensagem FpML.csproj.GenerateResource.Cache
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\Gerador Mensagem FpML.exe
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\Gerador Mensagem FpML.pdb
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\bin\Debug\Inventario.pdf
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\Sobre.baml
+C:\Users\donato.ressa\Documents\Visual Studio 2013\Projects\Gerador Mensagem FpML\Gerador Mensagem FpML\obj\Debug\Sobre.g.cs

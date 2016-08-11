@@ -1,0 +1,42 @@
+﻿<Window x:Class="Gerador_Mensagem_FpML.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gerador Mensagem FpML" Height="1024" Width="1400" WindowState="Maximized" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Menu Width="Auto" Height="25" Background="Transparent" DockPanel.Dock="Top">
+            <MenuItem Header="Arquivo">
+                <!--<MenuItem Header="Consultar De X Para FpML" Click="DePara_Click"/>
+                <MenuItem Name="Importar" Header="Carregar Template..." Click="Importar_Click" IsEnabled="False"/>
+                <MenuItem Name="Exportar" Header="Salvar Template..." Click="Exportar_Click" />-->
+                <MenuItem Header="Sair" Click="MenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Editar">
+                <MenuItem Name="Config" Header="Configurações" Click="Config_Click" IsEnabled="False"/>
+            </MenuItem>
+            <MenuItem Name ="Sobre" Header="Sobre" Click="Sobre_Click">
+            </MenuItem>
+         </Menu>
+        <TabControl Name="tabPanel" Grid.Row="1">
+            <TabItem Name="tabCOE" Header="COE">
+                <ScrollViewer Grid.Row="1" >
+                    <Frame Source="COE_Form.xaml"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="tabSwapPV" Header="Swap">
+                <ScrollViewer Grid.Row="1">
+                    <Frame Source="Swap_Form.xaml"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="tabRendaFixaCOE" Header="Renda Fixa COE">
+                <ScrollViewer Grid.Row="1">
+                    <Frame Source="RendaFixaCOE_Form.xaml"/>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        </Grid>
+</Window>

@@ -1,0 +1,693 @@
+﻿<UserControl x:Class="Gerador_Mensagem_FpML.Swap_Form"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:AC.AvalonControlsLibrary.Controls;assembly=AvalonControlsLibrary"
+             mc:Ignorable="d">
+    <Grid>
+        <Grid Name="gridz">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Name="Coluna1" Orientation="Vertical" Grid.Row="1">
+                <StackPanel Name="panelDadosComuns" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Dados Comuns de Operação" FontWeight="Bold" Style="{StaticResource Labels}" TextWrapping="WrapWithOverflow"/>
+                </StackPanel>
+                <StackPanel Name="panelEvento" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Evento" HorizontalAlignment="Right" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbEvento" SelectionChanged="cbEvento_SelectionChanged">
+                        <ComboBoxItem Content="Contratação"/>
+                        <ComboBoxItem Content="Liquidação"/>
+                        <ComboBoxItem Content="Cancelamento"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelTipoSwap" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Produto (Tipo Swap)" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbTipoSwap" Height="30" VerticalAlignment="Top" SelectionChanged="cbTipoSwap_SelectionChanged">
+                        <ComboBoxItem Content="Plain Vanilla"/>
+                        <ComboBoxItem Content="Com Barreira"/>
+                        <ComboBoxItem Content="Com Opção de Arrependimento e Barreira"/>
+                        <ComboBoxItem Content="Com Limitador"/>
+                        <ComboBoxItem Content="Com Limitador e Barreira"/>
+                        <ComboBoxItem Content="Com Opção de Arrependimento"/>
+                        <ComboBoxItem Content="Com Opção de Arrependimento e Limitador"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelAlteracao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Alteração?" Style="{StaticResource Labels}"/>
+                    <CheckBox Name="cbAlteracao" />
+                </StackPanel>
+                <StackPanel Name="panelChaveEKM" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Chave EKM" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbEKM" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelProcessoFuncional" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Chave Processo Funcional" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbProcessoFunc" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelChaveNatural" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Chave Natural" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbChaveNatural" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelDataInicioVigencia" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Início Vigência" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpDataInicioVigencia" />
+                </StackPanel>
+                <StackPanel Name="panelDataInicioValorizacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Início Valorização" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpDataInicioValoriza" />
+                </StackPanel>
+                <StackPanel Name="panelDataCarencia" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Carência" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpDataCarencia" />
+                </StackPanel>
+                <StackPanel Name="panelDataNegociacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Negociação" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpDataNegociacao" />
+                </StackPanel>
+                <StackPanel Name="panelDataPrevistaVencimento" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Prevista Vencimento" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpDataPrevistaVcto" />
+                </StackPanel>
+                <StackPanel Name="panelIdPortfolio" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="ID Portfolio" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbPortfolio" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndicadorNEM" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Indicador NEM" Style="{StaticResource Labels}"/>
+                    <CheckBox Name="cbNEM" />
+                </StackPanel>
+                <StackPanel Name="panelNumeroContrato" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Número Contrato" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbNumContrato" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelQuantDiasUteis" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quantidade Dias Úteis" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbQuantDiasUteis" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelQuantAtivosNegociados" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quantidade Ativos Negociados" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbQuantAtivos" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelValorPrecoUnitario" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Valor Preço Unitário" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbPrecoUnitario" Style="{StaticResource CaixaTexto}" />
+                </StackPanel>
+                <StackPanel Name="panelValorOperacaoFinanceira" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Valor Operação Financeira" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbValorOperacao" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelSiglaSistema" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Sigla Sistema" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbSigla" Style="{StaticResource CaixaTexto}" />
+                </StackPanel>
+                <StackPanel Name="panelFormaLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Destino Liquidação Financeira" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbFormaLiq" >
+                        <ComboBoxItem Content="CETIP"/>
+                        <ComboBoxItem Content="CC"/>
+                        <ComboBoxItem Content="CHEQUE"/>
+                        <ComboBoxItem Content="DOC"/>
+                        <ComboBoxItem Content="SELIC"/>
+                        <ComboBoxItem Content="TED"/>
+                        <ComboBoxItem Content="BMF"/>
+                        <ComboBoxItem Content="CC EXTERNA"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelIDClienteParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="ID Cliente Parte" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIdClienteParte" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIDClienteContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="ID Cliente Contraparte" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIdClienteContraparte" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelCodigoSegmentoCliente" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Código Segmento Cliente" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbSegmentoCliente" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelGrupoEconomicoParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Grupo Econômico Parte" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbGrupoEconomicoParte" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelGrupoEconomicoContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Grupo Econômico Contraparte" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbGrupoEconomicoContraparte" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelChaveEKMOperacaoVinculo" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Chave EKM Operação Vinculada" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbChaveEKMOperacaoVinculo" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelCodigoFigura" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Código Figura" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbCodigoFigura" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelCamaraRegistro" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Câmara Registro" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbNomeCamaraRegistro">
+                        <ComboBoxItem Content="CETIP"/>
+                        <ComboBoxItem Content="SELIC"/>
+                        <ComboBoxItem Content="BMFBOVESPA"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelFuncionalOperador" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Funcional Operador" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbFuncionalOperador" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+
+                </StackPanel>
+                <StackPanel Name="panelTipoFormaLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo de Forma de Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbTipoFormaLiquidacao" >
+                        <ComboBoxItem Content="Financeira"/>
+                        <ComboBoxItem Content="Física"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelCodInstrumentoFinanceiro" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Código Instrumento Financeiro" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbCodIF" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelCodTipoCondicaoMercadoLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Código Tipo Condição Mercado Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbTipoCondicaoMercado" >
+                        <ComboBoxItem Content="A mercado"/>
+                        <ComboBoxItem Content="Na curva"/>
+                        <ComboBoxItem Content="Sem condição"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelModalidade" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Modalidade"  TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbModalidade" Height="30" VerticalAlignment="Top">
+                        <ComboBoxItem Content="Capital investido garantido"/>
+                        <ComboBoxItem Content="Perda limitada ao capital investido"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelTipoCondicaoResgateFinanceiro" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Condição Resgate Financeiro" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbCondicaoResgateFinanceiro">
+                        <ComboBoxItem Content="Automatica"/>
+                        <ComboBoxItem Content="Manual"/>
+                        <ComboBoxItem Content="Não aplicável"/>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Name="Coluna2" Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+                <StackPanel Name="panelIndexadorParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Indexador - Parte" FontWeight="Bold" Style="{StaticResource Labels}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteAtributo" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Atributo" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexParteAtrib" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteFamilia" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Família" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexParteFamilia" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteSerie" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Série" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexParteSerie" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteTipoAtributo" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Atributo" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexParteTipoAtrib" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteQuantFixingContratacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quant. Fixing Contratação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexParteQuantFixingContrat" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteQuantFixingVencimento" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quant. Fixing Vcto." TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexParteQuantFixingVcto" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteDataFixingContratacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Fixing Contratação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpIndexParteDataFixingContrat" />
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteDataFixingVencimento" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Fixing Vencimento" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpIndexParteDataFixingVcto" />
+                </StackPanel>
+                <StackPanel Name="panelIndexadorPartePercentualIndexador" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="% Indexador" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexPartePercentualIndex" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteTaxaPre" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Taxa Pré" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexParteTaxaPre" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteValorCotacaoInicial" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Valor Cotação Inicial" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexParteValorCotInicial" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteBaseTaxa" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Base Taxa" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexParteBaseTaxa" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteTipoCotacaoLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Cotação Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbIndexParteTipoCotacaoLiquidacao" >
+                        <ComboBoxItem Content="Fechamento"/>
+                        <ComboBoxItem Content="Média"/>
+                        <ComboBoxItem Content="Mínima"/>
+                        <ComboBoxItem Content="Máxima"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteQuantidadeFixingLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quantidade Fixing Cotação Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexParteQuantCotLiq" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorParteReferenciaCotacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Referência Cotação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbIndexParteRefCotacao" >
+                        <ComboBoxItem Content="Reuters"/>
+                        <ComboBoxItem Content="PTAX-V"/>
+                        <ComboBoxItem Content="PTAX-C"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Name="panelIndexadorContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Indexador - Contraparte" FontWeight="Bold" Style="{StaticResource Labels}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteAtributo" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Atributo" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexContraparteAtrib" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteFamilia" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Família" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexContraparteFamilia" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteSerie" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Série" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}" />
+                    <TextBox Name="tbIndexContraparteSerie" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteTipoAtributo" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Atributo" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexContraparteTipoAtrib" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteQuantFixingContratacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quant. Fixing Contratação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexContraparteQuantFixingContrat" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteQuantFixingVencimento" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quantidade Fixing Vencimento" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexContraparteQuantFixingVcto" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteDataFixingContratacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Fixing Contratação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpIndexContraparteDataFixingContrat" />
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteDataFixingVencimento" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Fixing Vencimento" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpIndexContraparteDataFixingVcto" />
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContrapartePercentualIndexador" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="% Indexador" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexContrapartePercentualIndex" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteTaxaPre" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Taxa Pré" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexContraparteTaxaPre" Style="{StaticResource CaixaTexto}" />
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteValorCotacaoInicial" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Valor Cotação Inicial" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexContraparteValorCotInicial" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteBaseTaxa" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Base Taxa" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexContraparteBaseTaxa" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteTipoCotacaoLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Cotação Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbIndexContraparteTipoCotacaoLiquidacao" >
+                        <ComboBoxItem Content="Fechamento"/>
+                        <ComboBoxItem Content="Média"/>
+                        <ComboBoxItem Content="Mínima"/>
+                        <ComboBoxItem Content="Máxima"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteQuantidadeFixingLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quantidade Fixing Cotação Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexContraparteQuantCotLiq" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorContraparteReferenciaCotacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Referência Cotação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbIndexContraparteRefCotacao" >
+                        <ComboBoxItem Content="Reuters"/>
+                        <ComboBoxItem Content="PTAX-V"/>
+                        <ComboBoxItem Content="PTAX-C"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelImpostosLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Lista de Impostos Liquidação" FontWeight="Bold" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                </StackPanel>
+                <StackPanel Name="panelTipoImposto" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Imposto" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbTipoImposto" IsEnabled="False">
+                        <ComboBoxItem Content="IR"/>
+                        <ComboBoxItem Content="IOF"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelValorImposto" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Valor Imposto" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbValorImposto" Style="{StaticResource CaixaTexto}" IsEnabled="False"/>
+                    <Button Name="AddRow" Content="+" HorizontalAlignment="Right" Width="20" Click="AddRow_Click" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel Name="panelListaImpostosLiquidacao" Orientation="Horizontal" Height="auto" Margin="0,10,0,0">
+                    <DataGrid Name="dgImpostos" Width="300" Height="100" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" CanUserAddRows="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Tipo Imposto" Width="130" Binding="{Binding TipoImposto}"/>
+                            <DataGridTextColumn Header="Valor Imposto" Width="*" Binding="{Binding ValorImposto}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Name="Coluna3" Orientation="Vertical" Grid.Row="1" Grid.Column="2">
+                <StackPanel Name="panelIndexadorTermo" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Indexador - Período a Termo" FontWeight="Bold" Style="{StaticResource Labels}" TextWrapping="WrapWithOverflow"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoAtributo" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Atributo" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexTermoAtrib" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoFamilia" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Família" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexTermoFamilia" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoSerie" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Série" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexTermoSerie" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoTipoAtributo" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Atributo" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexTermoTipoAtrib" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoQuantFixingTermo" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quant. Fixing Periodo a Termo" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexTermoQuantFixing" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoDataFixingTermo" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Fixing Período a termo" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpIndexTermoDataFixing" />
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoPercentualIndexador" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="% Indexador" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexTermoPercentualIndex" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoTaxaPre" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Taxa Pré" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexTermoTaxaPre" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoValorCotacaoInicial" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Valor Cotação Inicial" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexTermoValorCotInicial" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoBaseTaxa" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Base Taxa" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexTermoBaseTaxa" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoTipoCotacaoLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Cotação Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbIndexTermoTipoCotacaoLiquidacao" >
+                        <ComboBoxItem Content="Fechamento"/>
+                        <ComboBoxItem Content="Média"/>
+                        <ComboBoxItem Content="Mínima"/>
+                        <ComboBoxItem Content="Máxima"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoQuantidadeFixingLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quantidade Fixing Cotação Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIndexTermoQuantCotLiq" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelIndexadorTermoReferenciaCotacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Referência Cotação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbIndexTermoRefCotacao" >
+                        <ComboBoxItem Content="Reuters"/>
+                        <ComboBoxItem Content="PTAX-V"/>
+                        <ComboBoxItem Content="PTAX-C"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelDemaisInfos" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Demais Informações" FontWeight="Bold" Style="{StaticResource Labels}"/>
+                </StackPanel>
+                <StackPanel Name="panelCodOferta" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Código Oferta" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbIdOferta" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelIndicadorOfertaPublica" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Indicador Oferta Pública " TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <CheckBox Name="cbIdOfertaPublica" />
+                </StackPanel>
+                <StackPanel Name="panelPercentualCapitalGarantido" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="% Capital Garantido Cetip" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbPercentualCapitalGarantidoCetip" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelPercentualBaseAplicacaoCaixaOperacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="% Base Aplicacao Caixa Operacao" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbPercentualBaseAplicacaoCaixa" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelProtecaoContraProventos" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Proteção Contra Proventos"  TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbProtecaoContraProventos" >
+                        <ComboBoxItem Content="Ajustado pelo Emissor"/>
+                        <ComboBoxItem Content="Ajustado pela Cetip"/>
+                        <ComboBoxItem Content="Sem ajuste"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelIndVariacaoQuanto" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Indicador Variação Quanto" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <CheckBox Name="cbVariacaoQuanto" />
+                </StackPanel>
+                <StackPanel Name="panelValorInicialParidadeQuanto" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Valor Inicial Paridade Quanto" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbValorParidadeQuanto" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelTipoModalidadeLiquidacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Modalidade Liquidação"  TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbTipoModalidadeLiquidacao" >
+                        <ComboBoxItem Content="Sem Modalidade"/>
+                        <ComboBoxItem Content="Multilateral"/>
+                        <ComboBoxItem Content="Bruta"/>
+                        <ComboBoxItem Content="Bilateral"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelFatorLimitadorSuperior" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Fator Limitador Superior" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbFatorLimitadorSuperior" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelFatorLimitadorInferior" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Fator Limitador Inferior" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbFatorLimitadorInferior" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+
+                <StackPanel Name="panelContaLiquidacaoParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Conta Liquidação - Parte" FontWeight="Bold" Style="{StaticResource Labels}"/>
+                </StackPanel>
+                <StackPanel Name="panelTipoContaLiquidacaoParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Conta Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbTipoContaLiquidacaoParte" SelectionChanged="cbTipoContaLiquidacaoParte_SelectionChanged">
+                        <ComboBoxItem Content="Correntista"/>
+                        <ComboBoxItem Content="Não Correntista"/>
+                        <ComboBoxItem Content="Câmara"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelNumeroBancoContaLiquidacaoParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Número Banco Conta Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbNumeroBancoContaLiquidacaoParte" KeyUp="tbNumeroBancoContaLiquidacaoParte_KeyUp" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelCodEmpresaConglomeradoParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Código Empresa Conglomerado" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbCodEmpresaConglomeradoParte" IsEnabled="False" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelNumeroAgenciaContaLiquidacaoParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Numero Agencia Conta Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbNumeroAgenciaLiquidacaoParte" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelNumeroContaLiquidacaoParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Numero Conta Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbNumeroContaLiquidacaoParte" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelNumeroDigitoContaLiquidacaoParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Numero Digito Conta Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbNumeroDigitoLiquidacaoParte" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+
+                
+            </StackPanel>
+            <StackPanel Name="Coluna4" Orientation="Vertical" Grid.Row="1" Grid.Column="3">
+                <StackPanel Name="panelContaLiquidacaoContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Conta Liquidação - Contraparte" FontWeight="Bold" Style="{StaticResource Labels}" TextWrapping="WrapWithOverflow"/>
+                </StackPanel>
+                <StackPanel Name="panelTipoContaLiquidacaoContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Conta Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbTipoContaLiquidacaoContraparte" SelectionChanged="cbTipoContaLiquidacaoContraparte_SelectionChanged">
+                        <ComboBoxItem Content="Correntista"/>
+                        <ComboBoxItem Content="Não Correntista"/>
+                        <ComboBoxItem Content="Câmara"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelNumeroBancoContaLiquidacaoContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Número Banco Conta Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbNumeroBancoContaLiquidacaoContraparte" KeyUp="tbNumeroBancoContaLiquidacaoContraparte_KeyUp" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelCodEmpresaConglomeradoContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Código Empresa Conglomerado" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbCodEmpresaConglomeradoContraparte" IsEnabled="False" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelNumeroAgenciaContaLiquidacaoContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Numero Agencia Conta Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbNumeroAgenciaLiquidacaoContraparte" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelNumeroContaLiquidacaoContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Numero Conta Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbNumeroContaLiquidacaoContraparte" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+                <StackPanel Name="panelNumeroDigitoContaLiquidacaoContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Numero Digito Conta Liquidação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbNumeroDigitoLiquidacaoContraparte" Style="{StaticResource CaixaTexto}" PreviewKeyUp="ValorNumericoInteiro_PreviewKeyUp"/>
+                </StackPanel>
+
+                <StackPanel Name="panelDataEfetivaVencimento" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Efetiva Vencimento"  TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpDataEfetivaVencimento" IsEnabled="False" />
+                </StackPanel>
+                <StackPanel Name="panelComprador" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Comprador" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbComprador" >
+                        <ComboBoxItem Content="Parte"/>
+                        <ComboBoxItem Content="Contraparte"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraParte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Barreira Parte" FontWeight="Bold" Style="{StaticResource Labels}"/>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraParteDataVerificacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Verificação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpBarreiraParteDataVerificacao"  IsEnabled="False" />
+                </StackPanel>
+                <StackPanel Name="panelBarreiraParteValor" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Valor" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbBarreiraParteValor" IsEnabled="False" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraParteDataFixingRebate" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Fixing Rebate" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpBarreiraParteDataFixingRebate" IsEnabled="False" />
+                </StackPanel>
+                <StackPanel Name="panelBarreiraParteTipoPagamentoRebate" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Pagamento Rebate" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbBarreiraParteTipoPagamentoRebate" IsEnabled="False">
+                        <ComboBoxItem Content="No vencimento"/>
+                        <ComboBoxItem Content="No acionamento da barreira"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraParteQuantDiasFixingRebate" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quantidade Dias Fixing Rebate" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbBarreiraParteQuantDiasFixingRebate" IsEnabled="False" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraParteFrequenciaVerificacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Frequencia Verificação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbBarreiraParteFrequenciaVerificacao" IsEnabled="False">
+                        <ComboBoxItem Content="Apenas no vencimento"/>
+                        <ComboBoxItem Content="Durante toda a operação"/>
+                        <ComboBoxItem Content="Datas Específicas"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraParteTipoDirecao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Direção" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbBarreiraParteTipoDirecao" IsEnabled="False">
+                        <ComboBoxItem Content="Acima"/>
+                        <ComboBoxItem Content="Abaixo"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraParteTipoCotacaoBarreira" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Cotação Barreira" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbBarreiraParteTipoCotacao" IsEnabled="False">
+                        <ComboBoxItem Content="Fechamento"/>
+                        <ComboBoxItem Content="Média"/>
+                        <ComboBoxItem Content="Mínima"/>
+                        <ComboBoxItem Content="Máxima"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Name="panelBarreiraContraparte" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Barreira Contraparte" FontWeight="Bold" Style="{StaticResource Labels}"/>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraContraparteDataVerificacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Verificação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpBarreiraContraparteDataVerificacao" IsEnabled="False" />
+                </StackPanel>
+                <StackPanel Name="panelBarreiraContraparteValor" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Valor" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbBarreiraContraparteValor" IsEnabled="False" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraContraparteDataFixingRebate" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Data Fixing Rebate" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <DatePicker Name="dpBarreiraContraparteDataFixingRebate" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraContraparteTipoPagamentoRebate" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Pagamento Rebate" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbBarreiraContraparteTipoPagamentoRebate" IsEnabled="False">
+                        <ComboBoxItem Content="No vencimento"/>
+                        <ComboBoxItem Content="No acionamento da barreira"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraContraparteQuantDiasFixingRebate" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Quantidade Dias Fixing Rebate" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbBarreiraContraparteQuantDiasFixingRebate" IsEnabled="False" Style="{StaticResource CaixaTexto}"/>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraContraparteFrequenciaVerificacao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Frequencia Verificação" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbBarreiraContraparteFrequenciaVerificacao" IsEnabled="False">
+                        <ComboBoxItem Content="Apenas no vencimento"/>
+                        <ComboBoxItem Content="Durante toda a operação"/>
+                        <ComboBoxItem Content="Datas Específicas"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraContraparteTipoDirecao" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Direção" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbBarreiraContraparteTipoDirecao" IsEnabled="False">
+                        <ComboBoxItem Content="Acima"/>
+                        <ComboBoxItem Content="Abaixo"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="panelBarreiraContraparteTipoCotacaoBarreira" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Tipo Cotação Barreira" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <ComboBox Name="cbBarreiraContraparteTipoCotacao" IsEnabled="False">
+                        <ComboBoxItem Content="Fechamento"/>
+                        <ComboBoxItem Content="Média"/>
+                        <ComboBoxItem Content="Mínima"/>
+                        <ComboBoxItem Content="Máxima"/>
+                    </ComboBox>
+                </StackPanel>
+                       
+                <StackPanel Name="panelCancelamento" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Dados Cancelamento" FontWeight="Bold" Style="{StaticResource Labels}"/>
+                </StackPanel>
+                <StackPanel Name="panelChaveEKMCancelamento" Orientation="Horizontal" Height="30">
+                    <TextBlock Text="Chave EKM Cancelamento" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbEKMCancelamento" Style="{StaticResource CaixaTexto}" />
+                </StackPanel>
+                <StackPanel Name="panelFMotivoCancelamento" Orientation="Horizontal" >
+                    <TextBlock Text="Descrição Motivo Cancelamento" TextWrapping="WrapWithOverflow" Style="{StaticResource Labels}"/>
+                    <TextBox Name="tbMotivoCancelamento" Style="{StaticResource CaixaTexto}" TextWrapping="Wrap" Height="50"/>
+                </StackPanel>
+                </StackPanel>
+            <StackPanel Name="Coluna5" Orientation="Vertical" Grid.Row="1" Grid.Column="4">
+                <TextBox Name="taFpML" Margin="5" Height="700" Width="auto" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                <Button Name="btnLimpar" Content="Limpar" PreviewMouseLeftButtonDown="btnLimpar_PreviewMouseLeftButtonDown" Width="100" HorizontalAlignment="Right"/>
+                <Button Name="btnGerarFpML" Content="Gerar FpML" PreviewMouseLeftButtonDown="btnGerarFpML_PreviewMouseLeftButtonDown" Width="100"  HorizontalAlignment="Right"/>
+                <Button Name="btnExportarFpML" Content="Exportar FpML" PreviewMouseLeftButtonDown="btnExportarFpML_PreviewMouseLeftButtonDown" IsEnabled="False" Width="100" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</UserControl>
